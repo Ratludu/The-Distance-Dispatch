@@ -26,8 +26,7 @@ func main() {
 
 	err := godotenv.Load()
 	if err != nil {
-		fmt.Println("Error loading environment variables", err)
-		return
+		fmt.Println("Error loading environment variables, assuming default has been set")
 	}
 
 	cfg := Config{
