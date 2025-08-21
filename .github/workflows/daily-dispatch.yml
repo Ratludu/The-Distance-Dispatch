@@ -1,0 +1,31 @@
+name: Daily Distance Dispatch
+
+on:
+  schedule:
+    - cron: '0 12 * * *' # Runs every day at 10:00 PM AEST (UTC+10)
+  workflow_dispatch: # Allows you to run it manually from the Actions tab
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.21'
+
+    - name: Run the application
+      env:
+        TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+        TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+        TWILIO_PHONE_NUMBER: ${{ secrets.TWILIO_PHONE_NUMBER }}
+        YOUR_PHONE_NUMBER: ${{ secrets.YOUR_PHONE_NUMBER }}
+        CLIENT_ID: ${{ secrets.CLIENT_ID }}
+        CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+        REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+        ATHELETE_ID: ${{ secrets.ATHELETE_ID }}
+        RUN_YEAR_GOAL: ${{ secrets.RUN_YEAR_GOAL }}
+      run: go run .
