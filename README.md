@@ -50,15 +50,37 @@ ATHELETE_ID="your_strava_athelete_id"
 RUN_YEAR_GOAL="your_yearly_running_goal_in_km"
 ```
 
-## Usage
+## Usage (Local)
 
-To run the application, execute the following command:
+To run the application locally for testing, execute the following command:
 
 ```sh
 go run .
 ```
 
 This will trigger the application to fetch your Strava data and send an SMS to your configured phone number.
+
+## Deployment (GitHub Actions)
+
+This repository includes a GitHub Actions workflow to run the application on a schedule.
+
+The workflow is defined in `.github/workflows/daily-dispatch.yml` and is configured to run daily at 10:00 PM AEST.
+
+To use the GitHub Actions workflow, you need to add your environment variables as secrets to your GitHub repository.
+
+1.  In your GitHub repository, go to `Settings` > `Secrets and variables` > `Actions`.
+2.  Click `New repository secret` for each of the following secrets:
+    *   `TWILIO_ACCOUNT_SID`
+    *   `TWILIO_AUTH_TOKEN`
+    *   `TWILIO_PHONE_NUMBER`
+    *   `YOUR_PHONE_NUMBER`
+    *   `CLIENT_ID`
+    *   `CLIENT_SECRET`
+    *   `REFRESH_TOKEN`
+    *   `ATHELETE_ID`
+    *   `RUN_YEAR_GOAL`
+
+Once the secrets are added, the workflow will run automatically on the defined schedule. You can also trigger it manually from the `Actions` tab in your repository.
 
 ## Contributing
 
