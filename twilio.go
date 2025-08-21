@@ -4,7 +4,7 @@ import (
 	twilioApi "github.com/twilio/twilio-go/rest/api/v2010"
 )
 
-func (c *twilioConfig) sendMessage(msg string) error {
+func (c *Config) sendMessage(msg string) error {
 
 	params := &twilioApi.CreateMessageParams{}
 	params.SetTo(c.TargetNumber)
