@@ -64,7 +64,7 @@ This will trigger the application to fetch your Strava data and send an SMS to y
 
 This repository includes a GitHub Actions workflow to run the application on a schedule.
 
-The workflow is defined in `.github/workflows/daily-dispatch.yml` and is configured to run daily at 10:00 PM AEST.
+The workflow is defined in `.github/workflows/daily-dispatch.yml` and is configured to run daily at 07:00 AM AEST.
 
 To use the GitHub Actions workflow, you need to add your environment variables as secrets to your GitHub repository.
 
